@@ -1,0 +1,97 @@
+#################################################################################################################################
+###                                   Файл настроек меню antiX 23 для рабочего стола zzz-icewm                                ###
+###                                     Сборка https://github.com/Lagunix/antix от 13.05.2024                                 ###
+################################################################################################################################# 
+include personal ## включено личное меню
+separator
+#################################################################################################################################
+###                                                  Меню быстрого выбора                                                     ###
+################################################################################################################################# 
+prog "Выбор приложения" /usr/share/icons/papirus-antix/48x48/apps/gnome-searchtool.png /usr/local/bin/app-select
+prog "Терминал" /usr/share/icons/papirus-antix/48x48/apps/terminal.png desktop-defaults-run -t
+prog "Файл-менеджер" /usr/share/icons/papirus-antix/48x48/apps/file-manager.png desktop-defaults-run -fm
+prog "Браузер" /usr/share/icons/hicolor/48x48/apps/chromium-gost.png desktop-defaults-run -b
+prog "Редактор" /usr/share/icons/papirus-antix/48x48/apps/text-editor.png desktop-defaults-run -te
+#################################################################################################################################
+###                                                    Меню приложений                                                        ###
+################################################################################################################################# 
+separator
+menufile "Приложения" /usr/share/icons/papirus-antix/48x48/apps/applications.png menu-applications
+#################################################################################################################################
+###                                                      Личное меню                                                          ###
+################################################################################################################################# 
+separator
+menufile "Личное меню" /usr/share/icons/papirus-antix/48x48/apps/preferences-desktop-user.png personal
+#################################################################################################################################
+###                                                  Меню недавних файлов                                                     ###
+################################################################################################################################# 
+menu "Недавние файлы" /usr/share/icons/papirus-antix/48x48/places/folder-blue-recent.png {
+    menuprog "Список недавних файлов" /usr/share/icons/papirus-antix/48x48/places/folder-blue-recent.png /usr/local/bin/icewm-menu-recentfiles.sh
+    separator
+    prog "Число недавних файлов" /usr/share/icons/papirus-antix/48x48/apps/gnome-activity-journal.png /usr/local/bin/yad-recently-used-settings.sh
+    prog "Очистить историю недавних файлов" /usr/share/icons/papirus-antix/48x48/apps/bleachbit.png /usr/local/bin/yad-recently-used-delete.sh
+}
+separator
+#################################################################################################################################
+###                                                    Сервисное меню                                                         ###
+### Ниже - крайне нежелательно что-либо исправлять! Большая вероятность, что пункты меню ниже исчезнут из исправленного меню. ###
+################################################################################################################################# 
+separator
+    prog "Стоп-кран" /usr/share/icons/papirus-antix/48x48/apps/appkill.png xkill
+    prog "Обновить меню" /usr/share/icons/papirus-antix/48x48/apps/update-manager.png desktop-menu --write-out-global
+separator
+#################################################################################################################################
+###                                                  Меню "П О М О Щ Ь"                                                       ###
+###  В этой части меню правила также другие, но соблюдая их - меню можно редактировать. Пункты меню исчезнут, если указанное  ###
+###  действие невозможно выполнить, ссылку или URL - найти и т.п.                                                             ###
+#################################################################################################################################
+menu "Помощь" /usr/share/icons/papirus-antix/48x48/apps/help-browser.png {
+    menu "antiX" /usr/share/icons/papirus-antix/48x48/places/folder.png {
+        prog "Все об antiX" - dillo https://distrowatch.com/table.php?distribution=antix
+        prog "FAQ" - dillo /usr/share/antiX/FAQ/index.html
+        prog "Неофициальный FAQ" - dillo https://www.antixforum.com/forums/topic/unoficial-antix-23-frequently-asked-questions/
+        prog "antiX-live How-To" - dillo /usr/share/antiX/Boot_Menu/antiX-gfxboot.html
+        prog "Анонсы" - dillo https://www.antixforum.com/forums/forum/news/announcements/
+    }
+    menu "IceWM" /usr/share/icons/papirus-antix/48x48/places/folder.png {
+        prog "IceWM FAQ" - /usr/bin/chromium-gost-stable https://ice-wm.org/FAQ/
+        prog "IceWM Manual" - /usr/bin/chromium-gost-stable https://ice-wm.org/manual/
+        separator
+        prog "OSNews" - /usr/bin/chromium-gost-stable http://www.osnews.com/story/7774/IceWM--The-Cool-Window-Manager/
+    }
+    menu "Форумы" /usr/share/icons/papirus-antix/48x48/places/folder.png {
+		prog "Форум Linux-Ru" - dillo https://www.linux-ru.ru/viewtopic.php?f=4&t=7435
+		prog "Форум Puppy" - dillo https://forum.puppyrus.org/index.php?topic=14177.0
+        prog "Форум (eng)" - dillo https://www.antixforum.com
+        separator
+        prog "Ошибка EXPKEYSIG" - dillo https://forum.mxlinux.org/viewtopic.php?f=40&t=49056
+        prog "Прыгает видео ATI Radeon" - dillo https://github.com/Lagunix/antix/blob/main/ati-fix.txt
+    }
+    menu "Manuals" /usr/share/icons/papirus-antix/48x48/places/folder.png {
+		prog "Partimage" - /usr/bin/chromium-gost-stable http://www.partimage.org/Partimage-manual_Usage
+        prog "irssi" - desktop-defaults-run -t man irssi
+        prog "mc" - desktop-defaults-run -t man mc
+        prog "mocp" - desktop-defaults-run -t man mocp
+        prog "Nano" - desktop-defaults-run -t man nano
+        prog "Rss/Atom" - desktop-defaults-run -t man newsboat
+        prog "Terminal" - desktop-defaults-run -t man urxvt
+        prog "Torrent" - desktop-defaults-run -t man rtorrent
+    }
+}
+#################################################################################################################################
+###                                      Меню "Десктоп" (Смена движка рабочего стола)                                         ###
+#################################################################################################################################
+menu "Десктоп" /usr/share/icons/papirus-antix/48x48/apps/user-desktop.png {
+    menufile "Сменить десктоп" /usr/share/icons/papirus-antix/48x48/apps/user-desktop.png /usr/share/desktop-session/wm-menus/icewm-wm-menu
+#    separator
+#    menuprog "Desktop Folder" /usr/share/icons/papirus-antix/48x48/places/desktop.png /usr/local/bin/icewm-menu-Desktop.sh
+#    separator
+    prog "Conky on/off" /usr/share/icons/papirus-antix/48x48/apps/conky-on-off.png conkytoggle.sh
+}
+#################################################################################################################################
+###         Ниже следуют пункты меню                                                                                          ###
+###                                                                                                                           ###
+###         ВЫПОЛНИТЬ                                                                                                         ###
+###         НАСТРОЙКИ                                                                                                         ###
+###         В Ы Х О Д     которые настраиваются из Центра управления antiX                                                    ###
+#################################################################################################################################
