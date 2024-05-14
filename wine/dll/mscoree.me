@@ -1,0 +1,4 @@
+0134:err:module:fixup_imports_ilonly mscoree.dll not found, IL-only binary L"express.exe" cannot be loaded
+
+After installing dotnet48 with winetricks, mscoree.dll is installed in system32 and syswow64. So there is no need to copy the files manually.
+But, in some cases the installation of .Net may fail. If this happens, try to install it again, or use a new wineprefix. Or, copy mscoree.dll manually.
